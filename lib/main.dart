@@ -27,7 +27,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => selectedPageNotifier),
         ChangeNotifierProvider(create: (context) => SignupScreenController()),
         ChangeNotifierProvider(create: (context) => LoginScreenController())
       ],

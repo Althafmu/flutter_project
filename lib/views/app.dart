@@ -4,7 +4,7 @@ import 'package:flutter_project/views/pages/home_page.dart';
 import 'package:flutter_project/views/pages/profile_page.dart';
 
 List<Widget> pages = [
-  const HomePage(),
+  HomePage(),
   const ProfilePage(),
 ];
 
