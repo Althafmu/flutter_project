@@ -103,7 +103,7 @@ class _HomePageState extends State<HomePage> {
   void _navigateToCart() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) =>  CartPage()),
+      MaterialPageRoute(builder: (context) => CartPage()),
     );
   }
 
@@ -125,7 +125,7 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         backgroundColor: Colors.white,
         title: const Text(
-          'ShopApp',
+          'BuyIt',
           style: TextStyle(
             color: Colors.black87,
             fontWeight: FontWeight.bold,
@@ -306,7 +306,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             /// Product image
             Expanded(
-              flex: 3,
+              flex: 4, // Increased flex for image
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -331,68 +331,93 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            /// Product details
-            Expanded(
-              flex: 2,
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    /// Product title
-                    Text(
+            /// Product details - Using Container with fixed height instead of Expanded
+            Container(
+              height: 105, // Fixed height for text content
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  /// Product title - More space allocated
+                  Flexible(
+                    flex: 3,
+                    child: Text(
                       product.title ?? 'No Title',
                       style: const TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: 14,
+                        fontSize: 13, // Slightly smaller font
+                        height: 1.2, // Better line height
                       ),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    const SizedBox(height: 4),
+                  ),
 
-                    /// Product brand
-                    if (product.brand != null)
-                      Text(
+                  const SizedBox(height: 4),
+
+                  /// Product brand - Constrained height
+                  if (product.brand != null)
+                    Flexible(
+                      flex: 1,
+                      child: Text(
                         product.brand!,
                         style: TextStyle(
                           color: Colors.grey[600],
-                          fontSize: 12,
+                          fontSize: 11,
                         ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
+                    ),
 
-                    const Spacer(),
+                  const Spacer(),
 
-                    /// Price and rating row
-                    Row(
+                  /// Price and rating row - Fixed at bottom
+                  SizedBox(
+                    height: 20, // Fixed height for price/rating row
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         /// Price
-                        Text(
-                          '\$${product.price?.toStringAsFixed(2) ?? '0.00'}',
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Colors.green,
+                        Flexible(
+                          flex: 2,
+                          child: Text(
+                            '\$${product.price?.toStringAsFixed(2) ?? '0.00'}',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                              color: Colors.green,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
+
+                        const SizedBox(width: 8),
 
                         /// Rating
                         if (product.rating != null)
-                          Row(
-                            children: [
-                              const Icon(Icons.star,
-                                  color: Colors.amber, size: 16),
-                              Text(
-                                product.rating!.toStringAsFixed(1),
-                                style: const TextStyle(fontSize: 12),
-                              ),
-                            ],
+                          Flexible(
+                            flex: 1,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Icon(Icons.star,
+                                    color: Colors.amber, size: 14),
+                                const SizedBox(width: 2),
+                                Text(
+                                  product.rating!.toStringAsFixed(1),
+                                  style: const TextStyle(fontSize: 11),
+                                ),
+                              ],
+                            ),
                           ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],

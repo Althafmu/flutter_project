@@ -15,7 +15,7 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   final _formKey = GlobalKey<FormState>();
-  
+
   // Controllers for all form fields
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -74,7 +74,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     SizedBox(height: 32),
-                    
+
                     // Name Field
                     _buildTextFormField(
                       controller: nameController,
@@ -91,7 +91,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                     ),
                     SizedBox(height: 16),
-                    
+
                     // Email Field
                     _buildTextFormField(
                       controller: emailController,
@@ -111,7 +111,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                     ),
                     SizedBox(height: 16),
-                    
+
                     // Phone Field
                     _buildTextFormField(
                       controller: phoneController,
@@ -129,7 +129,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                     ),
                     SizedBox(height: 16),
-                    
+
                     // Address Field
                     _buildTextFormField(
                       controller: addressController,
@@ -143,7 +143,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                     ),
                     SizedBox(height: 16),
-                    
+
                     // City and State Row
                     Row(
                       children: [
@@ -177,7 +177,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ],
                     ),
                     SizedBox(height: 16),
-                    
+
                     // ZIP Code Field
                     _buildTextFormField(
                       controller: zipController,
@@ -195,7 +195,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                     ),
                     SizedBox(height: 16),
-                    
+
                     // Password Field
                     _buildTextFormField(
                       controller: passwordController,
@@ -213,7 +213,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                     ),
                     SizedBox(height: 16),
-                    
+
                     // Confirm Password Field
                     _buildTextFormField(
                       controller: confirmPasswordController,
@@ -231,7 +231,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                     ),
                     SizedBox(height: 32),
-                    
+
                     // Sign Up Button
                     GestureDetector(
                       onTap: () async {
@@ -245,14 +245,14 @@ class _SignupScreenState extends State<SignupScreen> {
                             'state': stateController.text,
                             'zipCode': zipController.text,
                           };
-                          
+
                           var success = await providerobj.registerUser(
                             password: passwordController.text,
                             email: emailController.text,
                             userData: userData,
                             context: context,
                           );
-                          
+
                           if (success) {
                             Navigator.push(
                               context,
@@ -264,7 +264,8 @@ class _SignupScreenState extends State<SignupScreen> {
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text('Registration failed. Please try again.'),
+                                content: Text(
+                                    'Registration failed. Please try again.'),
                                 backgroundColor: Colorconstants.primarycolor,
                               ),
                             );
@@ -293,11 +294,11 @@ class _SignupScreenState extends State<SignupScreen> {
                             ),
                     ),
                     SizedBox(height: 16),
-                    
+
                     // Login Link
                     InkWell(
                       onTap: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => LoginScreen(),
@@ -313,7 +314,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     SizedBox(height: 24),
-                    
+
                     // Divider
                     Row(
                       children: [
@@ -332,7 +333,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ],
                     ),
                     SizedBox(height: 24),
-                    
+
                     // Google Sign In Button
                     context.watch<LoginScreenController>().googleislogined
                         ? CircularProgressIndicator()
@@ -352,8 +353,10 @@ class _SignupScreenState extends State<SignupScreen> {
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content: Text('Google Sign-In failed. Please try again.'),
-                                    backgroundColor: Colorconstants.primarycolor,
+                                    content: Text(
+                                        'Google Sign-In failed. Please try again.'),
+                                    backgroundColor:
+                                        Colorconstants.primarycolor,
                                   ),
                                 );
                               }
