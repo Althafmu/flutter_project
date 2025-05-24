@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_project/views/pages/auth/getstarted_page.dart';
 import 'package:flutter_project/views/pages/auth/login_page.dart';
 import 'package:flutter_project/views/pages/home_page.dart';
 
@@ -20,7 +21,7 @@ class _AuthStateState extends State<AuthState> {
           if (snapshot.hasData) {
             return HomePage();
           } else {
-            return LoginScreen();
+            return GetStartedPage();
           }
         },
       ),
