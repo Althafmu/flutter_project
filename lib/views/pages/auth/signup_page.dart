@@ -305,7 +305,7 @@ class _SignupScreenState extends State<SignupScreen> {
           Row(
             children: [
               Expanded(
-                flex: 2,
+                flex: 3,
                 child: _buildTextFormField(
                   controller: cityController,
                   hintText: 'City',
@@ -321,7 +321,7 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
               const SizedBox(width: 12),
               Expanded(
-                flex: 1,
+                flex: 3,
                 child: _buildTextFormField(
                   controller: stateController,
                   hintText: 'State',
@@ -335,9 +335,12 @@ class _SignupScreenState extends State<SignupScreen> {
                   },
                 ),
               ),
-              const SizedBox(width: 12),
+            ],
+          ),
+          SizedBox(height: spacing),
+          Row(
+            children: [
               Expanded(
-                flex: 1,
                 child: _buildTextFormField(
                   controller: zipController,
                   hintText: 'ZIP',
@@ -472,7 +475,8 @@ class _SignupScreenState extends State<SignupScreen> {
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: const Text('Registration failed. Please try again.'),
+                      content:
+                          const Text('Registration failed. Please try again.'),
                       backgroundColor: Colorconstants.primarycolor,
                     ),
                   );
@@ -567,8 +571,8 @@ class _SignupScreenState extends State<SignupScreen> {
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content:
-                              const Text('Google Sign-In failed. Please try again.'),
+                          content: const Text(
+                              'Google Sign-In failed. Please try again.'),
                           backgroundColor: Colorconstants.primarycolor,
                         ),
                       );
