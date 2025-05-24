@@ -487,7 +487,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             /// Product image with hover effect on desktop and discount badge
             Expanded(
-              flex: 4,
+              flex: 5,
               child: Stack(
                 children: [
                   MouseRegion(
@@ -546,7 +546,7 @@ class _HomePageState extends State<HomePage> {
 
             /// Product details with responsive padding
             Expanded(
-              flex: 3,
+              flex: 4,
               child: Padding(
                 padding: EdgeInsets.all(isDesktop ? 16 : 12),
                 child: Column(
