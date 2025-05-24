@@ -2,7 +2,8 @@
 
 <div align="center">
 
-![BuyIt Logo](assets/images/logo.png)
+<div align="center">
+<img src="assets/images/logo.png" alt="BuyIt Logo" width="120" height="120">
 
 **Shop Smart, Shop Easy**
 
