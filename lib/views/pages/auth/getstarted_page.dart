@@ -566,7 +566,7 @@ class _GetStartedPageState extends State<GetStartedPage>
                 ),
               ],
             ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 4),
           // Terms and Privacy
           Text(
             'By continuing, you agree to our Terms of Service and Privacy Policy',
@@ -672,7 +672,8 @@ class _GetStartedPageState extends State<GetStartedPage>
     Navigator.push(
       context,
       PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => const SignupScreen(),
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            const SignupScreen(),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return SlideTransition(
             position: animation.drive(
@@ -692,7 +693,8 @@ class _GetStartedPageState extends State<GetStartedPage>
     Navigator.push(
       context,
       PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => const LoginScreen(),
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            const LoginScreen(),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return SlideTransition(
             position: animation.drive(
