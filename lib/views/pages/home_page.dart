@@ -487,7 +487,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             /// Product image with hover effect on desktop and discount badge
             Expanded(
-              flex: 5,
+              flex: 6,
               child: Stack(
                 children: [
                   MouseRegion(
@@ -546,9 +546,9 @@ class _HomePageState extends State<HomePage> {
 
             /// Product details with responsive padding
             Expanded(
-              flex: 4,
+              flex: 5,
               child: Padding(
-                padding: EdgeInsets.all(isDesktop ? 16 : 12),
+                padding: EdgeInsets.all(isDesktop ? 16 : 7),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -637,8 +637,7 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           /// Price section with discount for mobile
                           if (hasDiscount)
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                            Row(
                               children: [
                                 Text(
                                   '\$${discountedPrice.toStringAsFixed(2)}',
@@ -648,6 +647,7 @@ class _HomePageState extends State<HomePage> {
                                     color: Colors.green,
                                   ),
                                 ),
+                                const SizedBox(width: 8),
                                 Text(
                                   '\$${product.price!.toStringAsFixed(2)}',
                                   style: TextStyle(
