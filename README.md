@@ -11,7 +11,7 @@
 [![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev)
 [![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)](https://firebase.google.com)
 
-[Download APK](#) | [View Demo](#) | [Report Bug](#) | [Request Feature](#)
+[Download APK](https://drive.google.com/file/d/1hzqL2XK7K6ebWYAVMs6Vkrvre9LYl3QC/view?usp=drivesdk) | [Video Demo](https://drive.google.com/file/d/1sDAhqZBp8T1Ls9WJ-JSidvyXiuGj8tMS/view?usp=drivesdk) | [Users table](https://drive.google.com/file/d/1sERHNTjcsosAdsZOkRiJFhQ_sMTzBByr/view?usp=drivesdk) | [Request Feature](#)
 
 </div>
 
