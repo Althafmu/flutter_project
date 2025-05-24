@@ -454,6 +454,19 @@ class _HomePageState extends State<HomePage> {
 
   /// Build responsive product card widget
   Widget _buildProductCard(Product product) {
+    // Calculate discounted price
+    double getDiscountedPrice() {
+      if (product.price == null) return 0.0;
+      if (product.discountPercentage == null) return product.price!;
+
+      final discount = product.price! * (product.discountPercentage! / 100);
+      return product.price! - discount;
+    }
+
+    final discountedPrice = getDiscountedPrice();
+    final hasDiscount =
+        product.discountPercentage != null && product.discountPercentage! > 0;
+
     return GestureDetector(
       onTap: () => _navigateToProductDetail(product),
       child: Container(
@@ -472,35 +485,62 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// Product image with hover effect on desktop
+            /// Product image with hover effect on desktop and discount badge
             Expanded(
               flex: 4,
-              child: MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(isDesktop ? 16 : 12),
+              child: Stack(
+                children: [
+                  MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(isDesktop ? 16 : 12),
+                        ),
+                        color: Colors.grey[100],
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(isDesktop ? 16 : 12),
+                        ),
+                        child: product.thumbnail != null
+                            ? Image.network(
+                                product.thumbnail!,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) =>
+                                    const Icon(Icons.image_not_supported,
+                                        size: 50, color: Colors.grey),
+                              )
+                            : const Icon(Icons.image_not_supported,
+                                size: 50, color: Colors.grey),
+                      ),
                     ),
-                    color: Colors.grey[100],
                   ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(isDesktop ? 16 : 12),
+
+                  /// Discount badge
+                  if (hasDiscount)
+                    Positioned(
+                      top: 8,
+                      right: 8,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: Text(
+                          '${product.discountPercentage!.toInt()}% OFF',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: isDesktop ? 12 : 10,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                     ),
-                    child: product.thumbnail != null
-                        ? Image.network(
-                            product.thumbnail!,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) =>
-                                const Icon(Icons.image_not_supported,
-                                    size: 50, color: Colors.grey),
-                          )
-                        : const Icon(Icons.image_not_supported,
-                            size: 50, color: Colors.grey),
-                  ),
-                ),
+                ],
               ),
             ),
 
@@ -541,19 +581,48 @@ class _HomePageState extends State<HomePage> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            '\$${product.price?.toStringAsFixed(2) ?? '0.00'}',
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: Colors.green,
+                          /// Price section with discount
+                          if (hasDiscount)
+                            Row(
+                              children: [
+                                Text(
+                                  '\$${discountedPrice.toStringAsFixed(2)}',
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                    color: Colors.green,
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                Text(
+                                  '\$${product.price!.toStringAsFixed(2)}',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    decoration: TextDecoration.lineThrough,
+                                    color: Colors.grey[500],
+                                  ),
+                                ),
+                              ],
+                            )
+                          else
+                            Text(
+                              '\$${product.price?.toStringAsFixed(2) ?? '0.00'}',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Colors.green,
+                              ),
                             ),
-                          ),
+
+                          const SizedBox(height: 4),
+
+                          /// Rating
                           if (product.rating != null)
                             Row(
                               children: [
                                 const Icon(Icons.star,
                                     color: Colors.amber, size: 16),
+                                const SizedBox(width: 4),
                                 Text(
                                   product.rating!.toStringAsFixed(1),
                                   style: const TextStyle(fontSize: 14),
@@ -563,18 +632,43 @@ class _HomePageState extends State<HomePage> {
                         ],
                       )
                     else
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          /// Price
-                          Text(
-                            '\$${product.price?.toStringAsFixed(2) ?? '0.00'}',
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                              color: Colors.green,
+                          /// Price section with discount for mobile
+                          if (hasDiscount)
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '\$${discountedPrice.toStringAsFixed(2)}',
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    color: Colors.green,
+                                  ),
+                                ),
+                                Text(
+                                  '\$${product.price!.toStringAsFixed(2)}',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    decoration: TextDecoration.lineThrough,
+                                    color: Colors.grey[500],
+                                  ),
+                                ),
+                              ],
+                            )
+                          else
+                            Text(
+                              '\$${product.price?.toStringAsFixed(2) ?? '0.00'}',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: Colors.green,
+                              ),
                             ),
-                          ),
+
+                          const SizedBox(height: 4),
 
                           /// Rating
                           if (product.rating != null)
@@ -582,6 +676,7 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 const Icon(Icons.star,
                                     color: Colors.amber, size: 16),
+                                const SizedBox(width: 4),
                                 Text(
                                   product.rating!.toStringAsFixed(1),
                                   style: const TextStyle(fontSize: 12),
