@@ -75,14 +75,14 @@ class _SignupScreenState extends State<SignupScreen> {
       BuildContext context, SignupScreenController providerobj) {
     return Center(
       child: Container(
-        constraints: BoxConstraints(maxWidth: 1200),
+        constraints: const BoxConstraints(maxWidth: 1200),
         child: Row(
           children: [
             // Left side - Welcome section
             Expanded(
               flex: 1,
               child: Container(
-                padding: EdgeInsets.all(48),
+                padding: const EdgeInsets.all(48),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
@@ -105,7 +105,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         color: Colorconstants.whitecolor,
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Text(
                       'Join thousands of users who trust our platform for their needs. Create your account and start your journey with us today.',
                       style: TextStyle(
@@ -122,7 +122,7 @@ class _SignupScreenState extends State<SignupScreen> {
             Expanded(
               flex: 1,
               child: Container(
-                padding: EdgeInsets.all(48),
+                padding: const EdgeInsets.all(48),
                 child: _buildForm(context, providerobj, isDesktop: true),
               ),
             ),
@@ -136,8 +136,8 @@ class _SignupScreenState extends State<SignupScreen> {
       BuildContext context, SignupScreenController providerobj) {
     return Center(
       child: Container(
-        constraints: BoxConstraints(maxWidth: 600),
-        padding: EdgeInsets.all(32),
+        constraints: const BoxConstraints(maxWidth: 600),
+        padding: const EdgeInsets.all(32),
         child: _buildForm(context, providerobj, isTablet: true),
       ),
     );
@@ -147,7 +147,7 @@ class _SignupScreenState extends State<SignupScreen> {
       BuildContext context, SignupScreenController providerobj) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(24),
+      padding: const EdgeInsets.all(24),
       child: _buildForm(context, providerobj),
     );
   }
@@ -164,7 +164,7 @@ class _SignupScreenState extends State<SignupScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (!isDesktop) SizedBox(height: 40),
+          if (!isDesktop) const SizedBox(height: 40),
           Text(
             'Create Account',
             style: TextStyle(
@@ -173,7 +173,7 @@ class _SignupScreenState extends State<SignupScreen> {
               color: Colorconstants.primarycolor,
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             'Fill in your details to get started',
             style: TextStyle(
@@ -225,7 +225,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     },
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Expanded(
                   child: _buildTextFormField(
                     controller: phoneController,
@@ -319,7 +319,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   },
                 ),
               ),
-              SizedBox(width: 12),
+              const SizedBox(width: 12),
               Expanded(
                 flex: 1,
                 child: _buildTextFormField(
@@ -335,7 +335,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   },
                 ),
               ),
-              SizedBox(width: 12),
+              const SizedBox(width: 12),
               Expanded(
                 flex: 1,
                 child: _buildTextFormField(
@@ -381,7 +381,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     },
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Expanded(
                   child: _buildTextFormField(
                     controller: confirmPasswordController,
@@ -472,7 +472,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text('Registration failed. Please try again.'),
+                      content: const Text('Registration failed. Please try again.'),
                       backgroundColor: Colorconstants.primarycolor,
                     ),
                   );
@@ -482,7 +482,7 @@ class _SignupScreenState extends State<SignupScreen> {
             child: providerobj.islogined
                 ? SizedBox(
                     height: buttonHeight,
-                    child: Center(child: CircularProgressIndicator()),
+                    child: const Center(child: CircularProgressIndicator()),
                   )
                 : Container(
                     width: double.infinity,
@@ -511,7 +511,7 @@ class _SignupScreenState extends State<SignupScreen> {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => LoginScreen(),
+                  builder: (context) => const LoginScreen(),
                 ),
               );
             },
@@ -529,9 +529,9 @@ class _SignupScreenState extends State<SignupScreen> {
           // Divider
           Row(
             children: [
-              Expanded(child: Divider(thickness: 1)),
+              const Expanded(child: Divider(thickness: 1)),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
                   'or',
                   style: TextStyle(
@@ -540,7 +540,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                 ),
               ),
-              Expanded(child: Divider(thickness: 1)),
+              const Expanded(child: Divider(thickness: 1)),
             ],
           ),
           SizedBox(height: spacing),
@@ -549,7 +549,7 @@ class _SignupScreenState extends State<SignupScreen> {
           context.watch<LoginScreenController>().googleislogined
               ? SizedBox(
                   height: buttonHeight,
-                  child: Center(child: CircularProgressIndicator()),
+                  child: const Center(child: CircularProgressIndicator()),
                 )
               : InkWell(
                   onTap: () async {
@@ -560,7 +560,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomePage(),
+                          builder: (context) => const HomePage(),
                         ),
                         (route) => false,
                       );
@@ -568,7 +568,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content:
-                              Text('Google Sign-In failed. Please try again.'),
+                              const Text('Google Sign-In failed. Please try again.'),
                           backgroundColor: Colorconstants.primarycolor,
                         ),
                       );
@@ -588,7 +588,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           ImageConstants.googlepng,
                           height: 24,
                         ),
-                        SizedBox(width: 12),
+                        const SizedBox(width: 12),
                         Text(
                           'Continue with Google',
                           style: TextStyle(
@@ -601,7 +601,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                 ),
-          if (!isDesktop) SizedBox(height: 24),
+          if (!isDesktop) const SizedBox(height: 24),
         ],
       ),
     );
@@ -657,7 +657,7 @@ class _SignupScreenState extends State<SignupScreen> {
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide.none,
           ),
-          errorStyle: TextStyle(fontSize: 12),
+          errorStyle: const TextStyle(fontSize: 12),
         ),
       ),
     );

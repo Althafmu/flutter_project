@@ -53,11 +53,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           // Add some top spacing for better centering
-                          if (isLargeScreen) SizedBox(height: 60),
+                          if (isLargeScreen) const SizedBox(height: 60),
 
                           // Logo/Title section
                           Container(
-                            padding: EdgeInsets.symmetric(vertical: 40),
+                            padding: const EdgeInsets.symmetric(vertical: 40),
                             child: Column(
                               children: [
                                 // Optional: Add a logo here if you have one
@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   textAlign: TextAlign.center,
                                 ),
                                 if (isLargeScreen) ...[
-                                  SizedBox(height: 8),
+                                  const SizedBox(height: 8),
                                   Text(
                                     'Welcome back! Please sign in to your account',
                                     style: TextStyle(
@@ -151,7 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
 
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
 
                           // Password field
                           TextFormField(
@@ -213,7 +213,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
 
-                          SizedBox(height: 32),
+                          const SizedBox(height: 32),
 
                           // Login button
                           InkWell(
@@ -227,7 +227,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => HomePage(),
+                                      builder: (context) => const HomePage(),
                                     ),
                                   );
                                   emailcontroller.clear();
@@ -235,7 +235,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
-                                      content: Text(
+                                      content: const Text(
                                         'Login failed. Please check your email and password.',
                                       ),
                                       backgroundColor:
@@ -260,7 +260,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           color: Colorconstants.primarycolor
                                               .withOpacity(0.3),
                                           blurRadius: 8,
-                                          offset: Offset(0, 4),
+                                          offset: const Offset(0, 4),
                                         ),
                                       ]
                                     : null,
@@ -290,7 +290,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
 
-                          SizedBox(height: 24),
+                          const SizedBox(height: 24),
 
                           // Sign up link
                           Center(
@@ -299,13 +299,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => SignupScreen(),
+                                    builder: (context) => const SignupScreen(),
                                   ),
                                 );
                               },
                               borderRadius: BorderRadius.circular(8),
                               child: Padding(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                   horizontal: 12,
                                   vertical: 8,
                                 ),
@@ -322,7 +322,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
 
-                          SizedBox(height: 32),
+                          const SizedBox(height: 32),
 
                           // Divider
                           Row(
@@ -335,7 +335,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 16),
+                                padding: const EdgeInsets.symmetric(horizontal: 16),
                                 child: Text(
                                   'or',
                                   style: TextStyle(
@@ -355,7 +355,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ],
                           ),
 
-                          SizedBox(height: 32),
+                          const SizedBox(height: 32),
 
                           // Google sign in button
                           InkWell(
@@ -366,13 +366,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => HomePage(),
+                                    builder: (context) => const HomePage(),
                                   ),
                                 );
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content: Text(
+                                    content: const Text(
                                         'Google Sign-In failed. Please try again.'),
                                     backgroundColor:
                                         Colorconstants.primarycolor,
@@ -397,7 +397,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         BoxShadow(
                                           color: Colors.black.withOpacity(0.1),
                                           blurRadius: 8,
-                                          offset: Offset(0, 4),
+                                          offset: const Offset(0, 4),
                                         ),
                                       ]
                                     : null,
@@ -423,7 +423,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             ImageConstants.googlepng,
                                             height: isLargeScreen ? 26 : 24,
                                           ),
-                                          SizedBox(width: 12),
+                                          const SizedBox(width: 12),
                                           Text(
                                             'Continue with Google',
                                             style: TextStyle(
@@ -439,7 +439,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
 
                           // Add bottom spacing for better centering
-                          if (isLargeScreen) SizedBox(height: 60),
+                          if (isLargeScreen) const SizedBox(height: 60),
                         ],
                       ),
                     ),

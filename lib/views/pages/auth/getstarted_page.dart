@@ -24,15 +24,15 @@ class _GetStartedPageState extends State<GetStartedPage>
   void initState() {
     super.initState();
     _fadeController = AnimationController(
-      duration: Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 1000),
       vsync: this,
     );
     _slideController = AnimationController(
-      duration: Duration(milliseconds: 800),
+      duration: const Duration(milliseconds: 800),
       vsync: this,
     );
     _bounceController = AnimationController(
-      duration: Duration(milliseconds: 2000),
+      duration: const Duration(milliseconds: 2000),
       vsync: this,
     );
 
@@ -45,7 +45,7 @@ class _GetStartedPageState extends State<GetStartedPage>
     ));
 
     _slideAnimation = Tween<Offset>(
-      begin: Offset(0, 0.3),
+      begin: const Offset(0, 0.3),
       end: Offset.zero,
     ).animate(CurvedAnimation(
       parent: _slideController,
@@ -62,10 +62,10 @@ class _GetStartedPageState extends State<GetStartedPage>
 
     // Start animations
     _fadeController.forward();
-    Future.delayed(Duration(milliseconds: 200), () {
+    Future.delayed(const Duration(milliseconds: 200), () {
       _slideController.forward();
     });
-    Future.delayed(Duration(milliseconds: 500), () {
+    Future.delayed(const Duration(milliseconds: 500), () {
       _bounceController.repeat(reverse: true);
     });
   }
@@ -108,13 +108,13 @@ class _GetStartedPageState extends State<GetStartedPage>
           Expanded(
             flex: 3,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 80, vertical: 60),
+              padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 60),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildHeroContent(context, isDesktop: true),
-                  SizedBox(height: 60),
+                  const SizedBox(height: 60),
                   _buildActionButtons(context, isDesktop: true),
                 ],
               ),
@@ -124,7 +124,7 @@ class _GetStartedPageState extends State<GetStartedPage>
           Expanded(
             flex: 2,
             child: Container(
-              padding: EdgeInsets.all(60),
+              padding: const EdgeInsets.all(60),
               child: _buildFeaturesList(context, isDesktop: true),
             ),
           ),
@@ -138,15 +138,15 @@ class _GetStartedPageState extends State<GetStartedPage>
       decoration: _buildGradientBackground(),
       child: SingleChildScrollView(
         child: Container(
-          constraints: BoxConstraints(maxWidth: 800),
-          margin: EdgeInsets.symmetric(horizontal: 40),
-          padding: EdgeInsets.symmetric(vertical: 60),
+          constraints: const BoxConstraints(maxWidth: 800),
+          margin: const EdgeInsets.symmetric(horizontal: 40),
+          padding: const EdgeInsets.symmetric(vertical: 60),
           child: Column(
             children: [
               _buildHeroContent(context, isTablet: true),
-              SizedBox(height: 60),
+              const SizedBox(height: 60),
               _buildFeaturesList(context, isTablet: true),
-              SizedBox(height: 60),
+              const SizedBox(height: 60),
               _buildActionButtons(context, isTablet: true),
             ],
           ),
@@ -161,14 +161,14 @@ class _GetStartedPageState extends State<GetStartedPage>
       child: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(24),
+            padding: const EdgeInsets.all(24),
             child: Column(
               children: [
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
                 _buildHeroContent(context),
-                SizedBox(height: 80),
+                const SizedBox(height: 80),
                 _buildActionButtons(context),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
               ],
             ),
           ),
@@ -211,7 +211,7 @@ class _GetStartedPageState extends State<GetStartedPage>
             ScaleTransition(
               scale: _bounceAnimation,
               child: Container(
-                padding: EdgeInsets.all(24),
+                padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
@@ -224,7 +224,7 @@ class _GetStartedPageState extends State<GetStartedPage>
                     BoxShadow(
                       color: Colorconstants.primarycolor.withOpacity(0.2),
                       blurRadius: 15,
-                      offset: Offset(0, 8),
+                      offset: const Offset(0, 8),
                     ),
                   ],
                 ),
@@ -235,7 +235,7 @@ class _GetStartedPageState extends State<GetStartedPage>
                 ),
               ),
             ),
-            SizedBox(height: 35),
+            const SizedBox(height: 35),
             // Main Title with gradient text effect
             ShaderMask(
               shaderCallback: (bounds) => LinearGradient(
@@ -255,7 +255,7 @@ class _GetStartedPageState extends State<GetStartedPage>
                 textAlign: isDesktop ? TextAlign.left : TextAlign.center,
               ),
             ),
-            SizedBox(height: 18),
+            const SizedBox(height: 18),
             // Subtitle
             Text(
               'Shop Smart, Shop Easy',
@@ -266,7 +266,7 @@ class _GetStartedPageState extends State<GetStartedPage>
               ),
               textAlign: isDesktop ? TextAlign.left : TextAlign.center,
             ),
-            SizedBox(height: 26),
+            const SizedBox(height: 26),
             // Description
             Text(
               'Discover millions of products at unbeatable prices. From electronics to fashion, home essentials to trending gadgets - find everything you need in one place with fast delivery and secure payments.',
@@ -277,7 +277,7 @@ class _GetStartedPageState extends State<GetStartedPage>
               ),
               textAlign: isDesktop ? TextAlign.left : TextAlign.center,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Stats row
             _buildStatsRow(isDesktop, isTablet),
           ],
@@ -294,7 +294,7 @@ class _GetStartedPageState extends State<GetStartedPage>
     ];
 
     return Container(
-      margin: EdgeInsets.only(top: 20),
+      margin: const EdgeInsets.only(top: 20),
       child: Row(
         mainAxisAlignment:
             isDesktop ? MainAxisAlignment.start : MainAxisAlignment.spaceEvenly,
@@ -311,7 +311,7 @@ class _GetStartedPageState extends State<GetStartedPage>
                     color: Colorconstants.primarycolor,
                   ),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
                   stat['label']!,
                   style: TextStyle(
@@ -367,12 +367,12 @@ class _GetStartedPageState extends State<GetStartedPage>
               ),
               textAlign: TextAlign.center,
             ),
-          if (!isDesktop) SizedBox(height: 30),
+          if (!isDesktop) const SizedBox(height: 30),
           if (isDesktop)
             GridView.builder(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1,
                 childAspectRatio: 4,
                 mainAxisSpacing: 20,
@@ -385,7 +385,7 @@ class _GetStartedPageState extends State<GetStartedPage>
           else
             GridView.builder(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: isTablet ? 2 : 1,
                 childAspectRatio: isTablet ? 1.5 : 3,
@@ -413,7 +413,7 @@ class _GetStartedPageState extends State<GetStartedPage>
           BoxShadow(
             color: Colorconstants.greycolor.withOpacity(0.08),
             blurRadius: 15,
-            offset: Offset(0, 8),
+            offset: const Offset(0, 8),
           ),
         ],
         border: Border.all(
@@ -425,7 +425,7 @@ class _GetStartedPageState extends State<GetStartedPage>
           ? Row(
               children: [
                 Container(
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
@@ -441,7 +441,7 @@ class _GetStartedPageState extends State<GetStartedPage>
                     color: Colorconstants.primarycolor,
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -455,7 +455,7 @@ class _GetStartedPageState extends State<GetStartedPage>
                           color: Colorconstants.blackcolor,
                         ),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Text(
                         feature['description'],
                         style: TextStyle(
@@ -472,7 +472,7 @@ class _GetStartedPageState extends State<GetStartedPage>
           : Column(
               children: [
                 Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
@@ -488,7 +488,7 @@ class _GetStartedPageState extends State<GetStartedPage>
                     color: Colorconstants.primarycolor,
                   ),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 Text(
                   feature['title'],
                   style: TextStyle(
@@ -498,7 +498,7 @@ class _GetStartedPageState extends State<GetStartedPage>
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
                   feature['description'],
                   style: TextStyle(
@@ -534,7 +534,7 @@ class _GetStartedPageState extends State<GetStartedPage>
                     fontSize: fontSize,
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Expanded(
                   child: _buildSecondaryButton(
                     context,
@@ -556,7 +556,7 @@ class _GetStartedPageState extends State<GetStartedPage>
                   height: buttonHeight,
                   fontSize: fontSize,
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 _buildSecondaryButton(
                   context,
                   'Already have an account? Sign In',
@@ -566,7 +566,7 @@ class _GetStartedPageState extends State<GetStartedPage>
                 ),
               ],
             ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           // Terms and Privacy
           Text(
             'By continuing, you agree to our Terms of Service and Privacy Policy',
@@ -605,7 +605,7 @@ class _GetStartedPageState extends State<GetStartedPage>
             BoxShadow(
               color: Colorconstants.primarycolor.withOpacity(0.4),
               blurRadius: 15,
-              offset: Offset(0, 8),
+              offset: const Offset(0, 8),
             ),
           ],
         ),
@@ -618,7 +618,7 @@ class _GetStartedPageState extends State<GetStartedPage>
                 color: Colors.white,
                 size: fontSize,
               ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               Text(
                 text,
                 style: TextStyle(
@@ -672,18 +672,18 @@ class _GetStartedPageState extends State<GetStartedPage>
     Navigator.push(
       context,
       PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => SignupScreen(),
+        pageBuilder: (context, animation, secondaryAnimation) => const SignupScreen(),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return SlideTransition(
             position: animation.drive(
-              Tween(begin: Offset(1.0, 0.0), end: Offset.zero).chain(
+              Tween(begin: const Offset(1.0, 0.0), end: Offset.zero).chain(
                 CurveTween(curve: Curves.easeInOut),
               ),
             ),
             child: child,
           );
         },
-        transitionDuration: Duration(milliseconds: 300),
+        transitionDuration: const Duration(milliseconds: 300),
       ),
     );
   }
@@ -692,18 +692,18 @@ class _GetStartedPageState extends State<GetStartedPage>
     Navigator.push(
       context,
       PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => LoginScreen(),
+        pageBuilder: (context, animation, secondaryAnimation) => const LoginScreen(),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return SlideTransition(
             position: animation.drive(
-              Tween(begin: Offset(1.0, 0.0), end: Offset.zero).chain(
+              Tween(begin: const Offset(1.0, 0.0), end: Offset.zero).chain(
                 CurveTween(curve: Curves.easeInOut),
               ),
             ),
             child: child,
           );
         },
-        transitionDuration: Duration(milliseconds: 300),
+        transitionDuration: const Duration(milliseconds: 300),
       ),
     );
   }

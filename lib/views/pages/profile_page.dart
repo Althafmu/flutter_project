@@ -83,9 +83,9 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   EdgeInsets get horizontalPadding {
-    if (isDesktop) return EdgeInsets.symmetric(horizontal: 32);
-    if (isTablet) return EdgeInsets.symmetric(horizontal: 24);
-    return EdgeInsets.symmetric(horizontal: 16);
+    if (isDesktop) return const EdgeInsets.symmetric(horizontal: 32);
+    if (isTablet) return const EdgeInsets.symmetric(horizontal: 24);
+    return const EdgeInsets.symmetric(horizontal: 16);
   }
 
   @override
@@ -167,7 +167,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       style: TextStyle(color: Colorconstants.primarycolor),
                     ),
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                 ] else ...[
                   IconButton(
                     onPressed: () async {
@@ -194,7 +194,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     }
                   },
                   itemBuilder: (BuildContext context) => [
-                    PopupMenuItem<String>(
+                    const PopupMenuItem<String>(
                       value: 'logout',
                       child: Row(
                         children: [
@@ -216,7 +216,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _buildDesktopLayout(UserModel user) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 32),
+      padding: const EdgeInsets.symmetric(vertical: 32),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -226,12 +226,12 @@ class _ProfilePageState extends State<ProfilePage> {
             child: Column(
               children: [
                 _buildProfileHeader(user, isDesktopSidebar: true),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 _buildAccountSettings(),
               ],
             ),
           ),
-          SizedBox(width: 32),
+          const SizedBox(width: 32),
           // Right column - Profile form
           Expanded(
             flex: 2,
@@ -246,11 +246,11 @@ class _ProfilePageState extends State<ProfilePage> {
     return Column(
       children: [
         _buildProfileHeader(user),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         _buildProfileForm(),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         _buildAccountSettings(),
-        SizedBox(height: 24),
+        const SizedBox(height: 24),
       ],
     );
   }
@@ -266,7 +266,7 @@ class _ProfilePageState extends State<ProfilePage> {
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
             blurRadius: 10,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
@@ -301,12 +301,12 @@ class _ProfilePageState extends State<ProfilePage> {
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text('Image upload feature coming soon!'),
+                            content: const Text('Image upload feature coming soon!'),
                             backgroundColor: Colorconstants.primarycolor,
                           ),
                         );
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.camera_alt,
                         color: Colors.white,
                         size: 20,
@@ -316,7 +316,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
             ],
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text(
             user.name,
             style: TextStyle(
@@ -326,7 +326,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text(
             user.email,
             style: TextStyle(
@@ -335,9 +335,9 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
             decoration: BoxDecoration(
               color: Colorconstants.primarycolor.withOpacity(0.1),
               borderRadius: BorderRadius.circular(12),
@@ -366,7 +366,7 @@ class _ProfilePageState extends State<ProfilePage> {
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
             blurRadius: 10,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
@@ -383,7 +383,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 color: Colorconstants.blackcolor,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Personal Info Fields
             if (isDesktop) ...[
@@ -403,7 +403,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       },
                     ),
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Expanded(
                     child: _buildProfileField(
                       title: 'Email',
@@ -449,7 +449,7 @@ class _ProfilePageState extends State<ProfilePage> {
               },
             ),
 
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             Text(
               'Address Information',
               style: TextStyle(
@@ -458,7 +458,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 color: Colorconstants.blackcolor,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             _buildProfileField(
               title: 'Street Address',
@@ -480,7 +480,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       enabled: _isEditing,
                     ),
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Expanded(
                     flex: 1,
                     child: _buildProfileField(
@@ -490,7 +490,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       enabled: _isEditing,
                     ),
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Expanded(
                     flex: 1,
                     child: _buildProfileField(
@@ -514,7 +514,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       enabled: _isEditing,
                     ),
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Expanded(
                     child: _buildProfileField(
                       title: 'State',
@@ -535,7 +535,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ],
 
             if (_isEditing) ...[
-              SizedBox(height: 32),
+              const SizedBox(height: 32),
               Row(
                 children: [
                   Expanded(
@@ -549,7 +549,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         });
                       },
                       style: OutlinedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(vertical: 16),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -561,7 +561,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () async {
@@ -574,12 +574,12 @@ class _ProfilePageState extends State<ProfilePage> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colorconstants.primarycolor,
                         foregroundColor: Colors.white,
-                        padding: EdgeInsets.symmetric(vertical: 16),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      child: Text('Save Changes'),
+                      child: const Text('Save Changes'),
                     ),
                   ),
                 ],
@@ -602,7 +602,7 @@ class _ProfilePageState extends State<ProfilePage> {
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
             blurRadius: 10,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
@@ -617,7 +617,7 @@ class _ProfilePageState extends State<ProfilePage> {
               color: Colorconstants.blackcolor,
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           _buildAccountAction(
             title: 'Change Password',
             subtitle: 'Update your account password',
@@ -625,13 +625,13 @@ class _ProfilePageState extends State<ProfilePage> {
             onTap: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text('Change password feature coming soon!'),
+                  content: const Text('Change password feature coming soon!'),
                   backgroundColor: Colorconstants.primarycolor,
                 ),
               );
             },
           ),
-          Divider(height: 32),
+          const Divider(height: 32),
           _buildAccountAction(
             title: 'Notification Settings',
             subtitle: 'Manage your notification preferences',
@@ -639,13 +639,13 @@ class _ProfilePageState extends State<ProfilePage> {
             onTap: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text('Notification settings coming soon!'),
+                  content: const Text('Notification settings coming soon!'),
                   backgroundColor: Colorconstants.primarycolor,
                 ),
               );
             },
           ),
-          Divider(height: 32),
+          const Divider(height: 32),
           _buildAccountAction(
             title: 'Delete Account',
             subtitle: 'Permanently delete your account',
@@ -669,7 +669,7 @@ class _ProfilePageState extends State<ProfilePage> {
     String? Function(String?)? validator,
   }) {
     return Container(
-      margin: EdgeInsets.only(bottom: 16),
+      margin: const EdgeInsets.only(bottom: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -681,7 +681,7 @@ class _ProfilePageState extends State<ProfilePage> {
               color: Colorconstants.blackcolor,
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           TextFormField(
             controller: controller,
             enabled: enabled,
@@ -708,7 +708,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Colors.red),
+                borderSide: const BorderSide(color: Colors.red),
               ),
             ),
             style: TextStyle(
@@ -733,7 +733,7 @@ class _ProfilePageState extends State<ProfilePage> {
       onTap: onTap,
       borderRadius: BorderRadius.circular(8),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.symmetric(vertical: 8),
         child: Row(
           children: [
             Icon(
@@ -741,7 +741,7 @@ class _ProfilePageState extends State<ProfilePage> {
               color: textColor ?? Colorconstants.greycolor,
               size: 24,
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -802,19 +802,19 @@ class _ProfilePageState extends State<ProfilePage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Logout'),
-          content: Text('Are you sure you want to logout?'),
+          title: const Text('Logout'),
+          content: const Text('Are you sure you want to logout?'),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
                 context.read<LoginScreenController>().signOut(context);
               },
-              child: Text(
+              child: const Text(
                 'Logout',
                 style: TextStyle(color: Colors.red),
               ),
@@ -830,29 +830,29 @@ class _ProfilePageState extends State<ProfilePage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(
+          title: const Text(
             'Delete Account',
             style: TextStyle(color: Colors.red),
           ),
-          content: Text(
+          content: const Text(
             'Are you sure you want to delete your account? This action cannot be undone.',
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
+                  const SnackBar(
                     content: Text('Account deletion feature coming soon!'),
                     backgroundColor: Colors.red,
                   ),
                 );
               },
-              child: Text(
+              child: const Text(
                 'Delete',
                 style: TextStyle(color: Colors.red),
               ),
